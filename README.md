@@ -30,7 +30,7 @@ To get a local copy of this project running:
 ## Usage
 
 - Add a new task by typing in the input field and pressing Enter or clicking the Add button.
-- Delete a task by clicking on the task.
+- Delete a task by clicking the checkbox next to it.
 
 ## Contributing
 
