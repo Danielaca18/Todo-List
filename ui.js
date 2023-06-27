@@ -10,11 +10,26 @@ function createItem(item, index) {
      * 
      * @return {HTMLButtonElement} Button element representing specified task
      */
-    let element = document.createElement("button")
-    element.type = "button"
+    const element = document.createElement("div")
+    const container = document.createElement("div")
+    const radioBox = document.createElement("input")
+    const textContainer = document.createElement("div")
+    const text = document.createElement("p")
+
     element.id = index
-    element.className = "list-group-item list-group-item-action"
-    element.innerText = item
+    element.className = "list-group-item"
+    container.className = "form-check form-check-inline justify-content-between d-flex align-items-center"
+    radioBox.className = "form-check-input"
+    radioBox.type= "radio"
+    textContainer.className = "px-3 d-flex align-items-center flex-grow-1"
+    text.className = "lead fw-normal mb-0"
+    text.textContent = item
+
+    container.appendChild(radioBox)
+    textContainer.appendChild(text)
+    container.appendChild(textContainer)
+    element.appendChild(container)
+
     return element
 }
 
@@ -44,7 +59,8 @@ function update() {
     } else {
         items.forEach((item, index) => {
             let element = createItem(item, index)
-            element.onclick = function(event){
+            let radio = element.firstChild.childNodes[0]
+            radio.onchange = function(event){
                 items.splice(parseInt(element.id), 1)
                 update()
             }
